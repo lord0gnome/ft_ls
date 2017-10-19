@@ -1,6 +1,8 @@
 [submodule "printf"]
 	path = printf
 	url = https://github.com/lord0gnome/printf.git
+	branch = master
 [submodule "libft"]
 	path = libft
 	url = https://github.com/lord0gnome/libft.git
+	branch = master
