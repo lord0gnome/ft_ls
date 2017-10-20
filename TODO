@@ -1,0 +1,17 @@
+1.	Parse through considering things as options until you encounter
+	either a "--" or an incorrect option, which will be considered,
+	along with every subsequent argument, as a file/directory/operand
+	1.1	valid options include for the moment(subject to change)
+		-l
+		-a
+		-r
+		-R
+		-t
+		-lartR
+		will accept any number of each, though more will not change
+		behavior of program, ex:
+			-lllaarrrttrRR
+
+2.	Sort between folders/files, if multiple operands are given,
+	put files before folders in display, should organise an array
+	from the start.
