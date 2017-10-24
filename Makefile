@@ -6,12 +6,12 @@
 #    By: guiricha <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 16:55:06 by guiricha          #+#    #+#              #
-#    Updated: 2017/10/20 18:45:18 by guiricha         ###   ########.fr        #
+#    Updated: 2017/10/24 17:34:09 by guiricha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_NAME = main.c init_structs.c parse_options.c debug_print_funcs.c \
-		   seperate_files_and_folders.c
+		   seperate_files_and_folders.c ft_ls.c
 NAME = ft_ls
 CC = gcc
 CFLAGS =  -Wall -Wextra -Werror

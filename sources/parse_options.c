@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 16:39:57 by guiricha          #+#    #+#             */
-/*   Updated: 2017/10/20 20:07:23 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/10/24 19:19:00 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static int	is_valid_opt(char option, char *options)
 
 /*
  **	returns int to indicate success (SUCCESS) or error (ft_ls/includes/error.h)
+ **	NEEDS FIXING, COUNTS PARAMETERS INCORRECTLY.
  */
 
 int			parse_options(int argc, char **argv, t_ls_data *data)
@@ -50,7 +51,6 @@ int			parse_options(int argc, char **argv, t_ls_data *data)
 	int		index;
 	char	*current_arg;
 
-	data->last_param = 0;
 	while (data->last_param < argc)
 	{
 		index = 0;

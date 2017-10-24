@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 14:19:14 by guiricha          #+#    #+#             */
-/*   Updated: 2017/10/20 20:13:16 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/10/24 19:25:16 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,20 @@
 int	main(int argc, char **argv)
 {
 	t_ls_data	data;
+	char		**sorted_args;
+	int			len;
 
 	init_data(&data);
-	if (parse_options(argc - 1, &(argv[1]), &data) > 0)
-		data.last_param++;
-	else
+	sorted_args = &(argv[1]);
+	len = argc - 1;
+	if (parse_options(len, sorted_args, &data) < 0)
 		ft_printf( "\e[91m" "WARNING:" "\e[39m"" errors detected in parsing!\n"
 				"Culprit character is [%c]\n", data.parse_error_culprit);
 	print_parameters(data.params);
-	seperate_files_and_folders(argc - data.last_param, &(argv[data.last_param]), &data);
+	sorted_args = &(sorted_args[data.last_param]);
+	len -= data.last_param;
+	ft_printf("first arg is now %s and len should be %d\n", sorted_args[0], len);
+	sorted_args = ft_sort_str_array(sorted_args, len, &(ft_strcmp), 1); //careful here
+	seperate_files_and_folders(len, sorted_args, &data);
 	return (0);
 }
