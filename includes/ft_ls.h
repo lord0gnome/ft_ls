@@ -6,12 +6,29 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 16:14:44 by guiricha          #+#    #+#             */
-/*   Updated: 2017/10/24 17:34:37 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/10/30 16:53:43 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LS_H
 # define FT_LS_H
+# include <sys/stat.h>
+
+
+typedef struct	s_ls_filedata
+{
+
+}				t_ls_filedata;
+
+typedef struct	s_ls_list
+{
+	struct stat			statret;
+		
+
+	struct s_ls_list	*prev;
+	struct s_ls_list	*next;
+}				t_ls_list;
+
 
 struct	s_ls_params;
 

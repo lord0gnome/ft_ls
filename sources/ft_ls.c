@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 17:28:41 by guiricha          #+#    #+#             */
-/*   Updated: 2017/10/24 19:05:38 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/10/30 14:17:04 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_ls(char *item, t_ls_data *data)
 	int				written;
 
 	ioctl(0, TIOCGWINSZ, &w);
-	written = ft_printf("%-16s", item);
+	written = ft_printf("%s\n", item);
 	if (data->last_param)
 		item = &item[1];
 	return (OK);
