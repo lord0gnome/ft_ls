@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 16:14:44 by guiricha          #+#    #+#             */
-/*   Updated: 2017/10/30 16:53:43 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/02 14:40:29 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 
 typedef struct	s_ls_filedata
 {
-
+	mode_t		file_mode;
+	char		*name;
 }				t_ls_filedata;
 
 typedef struct	s_ls_list
 {
-	struct stat			statret;
+	t_ls_filedata		data;
 		
 
 	struct s_ls_list	*prev;
@@ -34,10 +35,9 @@ struct	s_ls_params;
 
 typedef struct	s_ls_data
 {
+	t_ls_list			*list;
 	struct s_ls_params	*params;
 	int					last_param;
-	char				**files;
-	char				**folders;
 	char		parse_error_culprit;
 }				t_ls_data;
 
@@ -57,7 +57,10 @@ typedef struct	s_ls_params
 int				init_data(t_ls_data *data);
 int				parse_options(int argc, char **argv, t_ls_data *data);
 int				seperate_files_and_folders(int names_len, char **names, t_ls_data *data);
+t_ls_list		*create_element_or_new_list(t_ls_filedata *data, t_ls_list *prev);
+int				check_file_and_add_to_list(char *file, t_ls_list **list, struct stat *buf);
 int				ft_ls(char *item, t_ls_data *data);
+
 void			print_parameters(t_ls_params *params);
 
 #endif

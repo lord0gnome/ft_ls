@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 14:45:24 by guiricha          #+#    #+#             */
-/*   Updated: 2017/10/30 17:08:26 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/02 14:29:12 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_ls_list	*create_element_or_new_list(t_ls_filedata *data, t_ls_list *prev)
 		prev->next = new;
 	}
 	new->next = NULL;
+	return (new);
 }
 
 int			free_ls_element(t_ls_list	*element)

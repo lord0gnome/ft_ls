@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 14:19:14 by guiricha          #+#    #+#             */
-/*   Updated: 2017/10/24 19:25:16 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/02 15:08:40 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ int	main(int argc, char **argv)
 	ft_printf("first arg is now %s and len should be %d\n", sorted_args[0], len);
 	sorted_args = ft_sort_str_array(sorted_args, len, &(ft_strcmp), 1); //careful here
 	seperate_files_and_folders(len, sorted_args, &data);
+	ft_printf("last link is probably %s\n", data.list->data.name);
 	return (0);
 }

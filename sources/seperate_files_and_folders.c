@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 18:43:13 by guiricha          #+#    #+#             */
-/*   Updated: 2017/10/24 17:33:43 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/02 14:39:49 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ int	seperate_files_and_folders(int names_len, char **names, t_ls_data *data)
 	int			*status;
 
 	index = 0;
-	data->files = NULL;
 	ft_printf("len of remaining args: [%d = argc]\n", names_len);
-	status = (int *)malloc(sizeof(int) * names_len);
+	status = (int *)malloc(sizeof(int) * names_len + 1);
 	status[names_len] = -1;
 	while (index < names_len)
 	{
@@ -45,7 +44,7 @@ int	seperate_files_and_folders(int names_len, char **names, t_ls_data *data)
 		{
 			if (status[index] == error_file_folder_index)
 			{
-				ft_ls(names[index], data);
+				check_file_and_add_to_list(names[index], &(data->list), &current_item);
 			}
 			index++;
 		}
