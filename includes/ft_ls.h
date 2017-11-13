@@ -18,6 +18,7 @@
 typedef struct	s_ls_filedata
 {
 	mode_t		file_mode;
+	struct stat	statret;
 	char		*name;
 }				t_ls_filedata;
 
@@ -58,7 +59,8 @@ int				init_data(t_ls_data *data);
 int				parse_options(int argc, char **argv, t_ls_data *data);
 int				seperate_files_and_folders(int names_len, char **names, t_ls_data *data);
 t_ls_list		*create_element_or_new_list(t_ls_filedata *data, t_ls_list *prev);
-int				check_file_and_add_to_list(char *file, t_ls_list **list, struct stat *buf);
+int				add_file_to_list(char *file, t_ls_list **list);
+int				add_file_to_list_long_format(char *file, t_ls_list **list);
 int				ft_ls(char *item, t_ls_data *data);
 
 void			print_parameters(t_ls_params *params);

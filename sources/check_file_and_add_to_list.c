@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_file_and_add_to_list.c                       :+:      :+:    :+:   */
+/*   add_file_to_list_long_format.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -22,16 +22,29 @@
 **	otherwise just get the name, should already be sorted appropriately.
 */
 
-int	check_file_and_add_to_list(char *file, t_ls_list **list, struct stat *buf)
+int	add_file_to_list(char *file, t_ls_list **list)
 {
-	int	ret;
-	t_ls_filedata *data;
+	struct stat	buf;
+	t_ls_filedata	*data;
 
-	ret = lstat(file, buf);
 	data = (t_ls_filedata *)malloc(sizeof(t_ls_filedata));
-	data->file_mode = buf->st_mode;
+	if (lstat(file, &(buf)) != -1)
+	{
+		data->statret = buf;
+	}
+	// ft_memcpy(&(data->statret), &(buf), sizeof(struct stat));
+	data->name = ft_strdup(file);
+	*list = create_element_or_new_list(data, *list);
+	return (OK);
+}
+
+int	add_file_to_list_long_format(char *file, t_ls_list **list)
+{
+	t_ls_filedata	*data;
+
+	data = (t_ls_filedata *)malloc(sizeof(t_ls_filedata));
 	data->name = ft_strdup(file);
 	*list = create_element_or_new_list(data, *list);
 	ft_printf("list data = %s, pointer of list item is %p\n", (*list)->data.name, *list);
-	return (OK);	
+	return (OK);
 }

@@ -33,6 +33,14 @@ int	main(int argc, char **argv)
 	ft_printf("first arg is now %s and len should be %d\n", sorted_args[0], len);
 	sorted_args = ft_sort_str_array(sorted_args, len, &(ft_strcmp), 1); //careful here
 	seperate_files_and_folders(len, sorted_args, &data);
-	ft_printf("last link is probably %s\n", data.list->data.name);
+	while (data.list->prev)
+	{
+		data.list = data.list->prev;
+	}
+	while (data.list)
+	{
+		ft_printf("is the file [%s] a folder? %s\n", data.list->data.name, S_ISDIR(data.list->data.statret.st_mode) ? "yes" : "no" );
+		data.list = data.list->next;
+	}
 	return (0);
 }

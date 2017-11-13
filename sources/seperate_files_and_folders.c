@@ -44,7 +44,8 @@ int	seperate_files_and_folders(int names_len, char **names, t_ls_data *data)
 		{
 			if (status[index] == error_file_folder_index)
 			{
-				check_file_and_add_to_list(names[index], &(data->list), &current_item);
+				add_file_to_list(names[index], &(data->list));
+				// add_file_to_list_long_format(names[index], &(data->list), &current_item);
 			}
 			index++;
 		}

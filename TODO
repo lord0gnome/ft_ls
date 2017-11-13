@@ -15,3 +15,6 @@
 2.	Sort between folders/files, if multiple operands are given,
 	put files before folders in display, should organise an array
 	from the start.
+
+3. run function on all valid elements of array one by one.
+

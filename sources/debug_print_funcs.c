@@ -15,10 +15,10 @@
 
 void	print_parameters(t_ls_params *params)
 {
-	printf("(print_parameters) called!\n");
-	printf("show hidden(-a) = %s\n", (params->show_hidden ? "TRUE" : "FALSE"));
-	printf("reverse sort(-r) = %s\n", (params->reverse ? "TRUE" : "FALSE"));
-	printf("recursive(-R) = %s\n", (params->recursive ? "TRUE" : "FALSE"));
-	printf("time sort(-t) = %s\n", (params->sort_by_time ? "TRUE" : "FALSE"));
-	printf("long format(-l) = %s\n", (params->long_format ? "TRUE" : "FALSE"));
+	ft_printf("(print_parameters) called!\n");
+	ft_printf("show hidden(-a) = %s\n", (params->show_hidden ? "TRUE" : "FALSE"));
+	ft_printf("reverse sort(-r) = %s\n", (params->reverse ? "TRUE" : "FALSE"));
+	ft_printf("recursive(-R) = %s\n", (params->recursive ? "TRUE" : "FALSE"));
+	ft_printf("time sort(-t) = %s\n", (params->sort_by_time ? "TRUE" : "FALSE"));
+	ft_printf("long format(-l) = %s\n", (params->long_format ? "TRUE" : "FALSE"));
 }
