@@ -11,16 +11,48 @@
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+#include "libft.h"
 #include "error.h"
 #include "ft_printf.h"
-#include <sys/ioctl.h>
+#include <sys/types.h>
+#include <dirent.h>
+#include <string.h>
+#include <errno.h>
 
-int	ft_ls(char *item, t_ls_data *data)
+int	handle_dir(const char *name, t_ls_list *current_item)
 {
-	struct winsize	w;
+	DIR	*stream;
+	struct dirent *entry;
 
-	ioctl(0, TIOCGWINSZ, &w);
-	if (data->last_param)
-		item = &item[1];
+	ft_printf("opendir called on [%s]", current_item->data.name);
+	if ((stream = opendir(name)) == NULL)
+	{
+		ft_printf("ft_ls error : %s\n", strerror(errno));
+	}
+	else
+	{
+		while ((entry = readdir(stream)) != NULL)
+		{
+			
+			add_file_to_list(entry->d_name, &current_item);
+			ft_printf("%s\t", entry->d_name);
+		}
+		ft_printf("\n");
+	}
+	return (OK);
+}
+
+int	ft_ls(t_ls_list *item, t_ls_data *data)
+{
+	ft_printf("ls called on parameter [%s]", item->data.name); // debug pliz remove
+	if (data->params->recursive && S_ISDIR(item->data.statret.st_mode)
+			&& strcmp("..", item->data.name)
+			&& strcmp(".", item->data.name))
+	{
+		ft_printf("... Will call opendir on it.\n");
+		handle_dir(item->data.name, item);
+	}
+	ft_printf("\n");
+
 	return (OK);
 }

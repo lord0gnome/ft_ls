@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 	}
 	while (data.list)
 	{
-		ft_printf("is the file [%s] a folder? %s\n", data.list->data.name, S_ISDIR(data.list->data.statret.st_mode) ? "yes" : "no" );
+		ft_ls(data.list, &data);
 		data.list = data.list->next;
 	}
 	return (0);

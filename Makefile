@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 SRC_NAME = main.c init_structs.c parse_options.c debug_print_funcs.c \
-		   seperate_files_and_folders.c ft_ls.c check_file_and_add_to_list.c \
+		   seperate_files_and_folders.c ft_ls.c add_file_to_list.c \
 		   link_list_create.c
 NAME = ft_ls
 CC = gcc
