@@ -39,6 +39,10 @@ int	main(int argc, char **argv)
 	}
 	while (data.list)
 	{
+		if (data.list->init_entry)
+		{
+		    ft_printf("this entry is speciaaaaaal %s \n", data.list->data.name);
+		}
 		ft_ls(data.list, &data);
 		data.list = data.list->next;
 	}

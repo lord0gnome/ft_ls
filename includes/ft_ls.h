@@ -17,18 +17,19 @@
 
 typedef struct	s_ls_filedata
 {
-	mode_t		file_mode;
-	struct stat	statret;
-	char		*name;
+    mode_t		file_mode;
+    struct stat	statret;
+    char		*name;
 }				t_ls_filedata;
 
 typedef struct	s_ls_list
 {
-	t_ls_filedata		data;
-		
+    t_ls_filedata		data;
+    int			init_entry;
 
-	struct s_ls_list	*prev;
-	struct s_ls_list	*next;
+
+    struct s_ls_list	*prev;
+    struct s_ls_list	*next;
 }				t_ls_list;
 
 
@@ -36,23 +37,23 @@ struct	s_ls_params;
 
 typedef struct	s_ls_data
 {
-	t_ls_list			*list;
-	struct s_ls_params	*params;
-	int					last_param;
-	char		parse_error_culprit;
+    t_ls_list			*list;
+    struct s_ls_params	*params;
+    int					last_param;
+    char		parse_error_culprit;
 }				t_ls_data;
 
 typedef struct	s_ls_params
 {
-	int			print_options; // -h
-	int			show_hidden; // -a
-	int			recursive; // -R
-	int			long_format; // -l
-	int			reverse; // -r
-	int			sort_by_time; // -t
-	int			slash_for_dir; // -p '/' after each entry that is a directory
-	int			stream_format; // -m ", " after each entry
-	char		*valid_options;
+    int			print_options; // -h
+    int			show_hidden; // -a
+    int			recursive; // -R
+    int			long_format; // -l
+    int			reverse; // -r
+    int			sort_by_time; // -t
+    int			slash_for_dir; // -p '/' after each entry that is a directory
+    int			stream_format; // -m ", " after each entry
+    char		*valid_options;
 }				t_ls_params;
 
 int				init_data(t_ls_data *data);
