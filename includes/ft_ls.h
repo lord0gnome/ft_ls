@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 16:14:44 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/02 14:40:29 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/19 15:18:06 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,20 @@
 
 typedef struct	s_ls_filedata
 {
-    mode_t		file_mode;
-    struct stat	statret;
-    char		*name;
+	mode_t		file_mode;
+	struct stat	statret;
+	char		*name;
+	char		*real_name;
 }				t_ls_filedata;
 
 typedef struct	s_ls_list
 {
-    t_ls_filedata		data;
-    int			init_entry;
+	t_ls_filedata		data;
+	int			init_entry;
 
 
-    struct s_ls_list	*prev;
-    struct s_ls_list	*next;
+	struct s_ls_list	*prev;
+	struct s_ls_list	*next;
 }				t_ls_list;
 
 
@@ -37,32 +38,35 @@ struct	s_ls_params;
 
 typedef struct	s_ls_data
 {
-    t_ls_list			*list;
-    struct s_ls_params	*params;
-    int					last_param;
-    char		parse_error_culprit;
+	t_ls_list			*list;
+	struct s_ls_params	*params;
+	int					last_param;
+	char		parse_error_culprit;
+	char		*current_dir;
+	int			err;
 }				t_ls_data;
 
 typedef struct	s_ls_params
 {
-    int			print_options; // -h
-    int			show_hidden; // -a
-    int			recursive; // -R
-    int			long_format; // -l
-    int			reverse; // -r
-    int			sort_by_time; // -t
-    int			slash_for_dir; // -p '/' after each entry that is a directory
-    int			stream_format; // -m ", " after each entry
-    char		*valid_options;
+	int			print_options; // -h
+	int			show_hidden; // -a
+	int			recursive; // -R
+	int			long_format; // -l
+	int			reverse; // -r
+	int			sort_by_time; // -t
+	int			slash_for_dir; // -p '/' after each entry that is a directory
+	int			stream_format; // -m ", " after each entry
+	char		*valid_options;
 }				t_ls_params;
 
 int				init_data(t_ls_data *data);
 int				parse_options(int argc, char **argv, t_ls_data *data);
 int				seperate_files_and_folders(int names_len, char **names, t_ls_data *data);
 t_ls_list		*create_element_or_new_list(t_ls_filedata *data, t_ls_list *prev);
-int				add_file_to_list(char *file, t_ls_list **list);
+int				add_file_to_list(char *file, t_ls_list **list, char *real_name);
 int				ft_ls(t_ls_list *item, t_ls_data *data);
-
+void			handle_error(t_ls_data data);
 void			print_parameters(t_ls_params *params);
+void			print_list_from_start(t_ls_list *link);
 
 #endif

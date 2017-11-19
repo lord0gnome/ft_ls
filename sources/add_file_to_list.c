@@ -6,13 +6,13 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/02 13:34:30 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/02 15:31:36 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/19 13:28:56 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/stat.h>
 #include "ft_ls.h"
-#include "ft_printf.h"
+//#include "ft_printf.h"
 #include "error.h"
 #include "libft.h"
 #include <stdlib.h>
@@ -23,7 +23,7 @@
  **	NEED TO FIX linking between linked list items, not working as should be, getting close though.
  */
 
-int	add_file_to_list(char *file, t_ls_list **list)
+int	add_file_to_list(char *file, t_ls_list **list, char *real_name)
 {
     struct stat	buf;
     t_ls_filedata	*data;
@@ -31,7 +31,10 @@ int	add_file_to_list(char *file, t_ls_list **list)
     data = (t_ls_filedata *)malloc(sizeof(t_ls_filedata));
     if (lstat(file, &(buf)) != -1)
 	data->statret = buf;
+	else
+		return (KO_SYSCALL_ERROR_LSTAT);
     data->name = ft_strdup(file);
+	data->real_name = ft_strdup(real_name);
     *list = create_element_or_new_list(data, *list);
     return (OK);
 }

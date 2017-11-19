@@ -6,13 +6,13 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 14:45:24 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/02 14:29:12 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/19 14:57:54 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 #include "error.h"
-#include "ft_printf.h"
+//#include "ft_printf.h"
 #include <stdlib.h>
 #include <sys/stat.h>
 
@@ -22,53 +22,49 @@
 
 t_ls_list	*create_element_or_new_list(t_ls_filedata *data, t_ls_list *prev)
 {
-    t_ls_list	*new;
+	t_ls_list	*new;
 
-    new = (t_ls_list *)malloc(sizeof(t_ls_list));
-    if (!new)
-	return (NULL);
-    new->data = *data;
-    new->prev = NULL;
-    ft_printf("Making link list element for file [%s]\n", data->name);
-    if (prev)
-    {
-	ft_printf("previous element is [%s]\n", prev->data.name);
-	if (prev->next)
+	new = (t_ls_list *)malloc(sizeof(t_ls_list));
+	if (!new)
+		return (NULL);
+	new->data = *data;
+	new->prev = NULL;
+	new->next = NULL;
+	if (prev)
 	{
-
+		if (prev->next)
+			new->next = prev->next;
+		new->prev = prev;
+		if (prev->next)
+			prev->next->prev = new;
+		prev->next = new;
 	}
-	new->prev = prev;
-	if (prev->next)
-	    prev->next->prev = new;
-	prev->next = new;
-    }
-    new->next = NULL;
-    return (new);
+	return (new);
 }
 
 int			free_ls_element(t_ls_list	*element)
 {
-    if (element)
-    {
-	if (element->next)
-	    element->next->prev = element->prev;
-	if (element->prev)
-	    element->prev->next = element->next;
-	free(element);
-	return (OK);
-    }
-    return (NO_ELEMENT_TO_FREE);
+	if (element)
+	{
+		if (element->next)
+			element->next->prev = element->prev;
+		if (element->prev)
+			element->prev->next = element->next;
+		free(element);
+		return (OK);
+	}
+	return (NO_ELEMENT_TO_FREE);
 }
 
 int			free_ls_list(t_ls_list	*start_link)
 {
-    if (!start_link)
-	return(NO_LIST_TO_FREE);
-    while (start_link && start_link->next)
-    {
-	start_link = start_link->next;
-	free(start_link->prev);
-    }
-    free(start_link);
-    return (OK);
+	if (!start_link)
+		return(NO_LIST_TO_FREE);
+	while (start_link && start_link->next)
+	{
+		start_link = start_link->next;
+		free(start_link->prev);
+	}
+	free(start_link);
+	return (OK);
 }

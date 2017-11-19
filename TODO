@@ -16,5 +16,8 @@
 	put files before folders in display, should organise an array
 	from the start.
 
-3. run function on all valid elements of array one by one.
+3.	Make sure we're properly appending and trimming the current working
+	directory from the current path for all calls.
+
+4.	Need to read the whole dir from opendir, then close it and start on the other directories.
 
