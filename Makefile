@@ -6,13 +6,13 @@
 #    By: guiricha <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 16:55:06 by guiricha          #+#    #+#              #
-#    Updated: 2017/11/19 15:12:32 by guiricha         ###   ########.fr        #
+#    Updated: 2017/11/19 17:02:16 by guiricha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_NAME = main.c init_structs.c parse_options.c debug_print_funcs.c \
 		   seperate_files_and_folders.c ft_ls.c add_file_to_list.c \
-		   link_list_create.c list_debug.c handle_error.c
+		   link_list_create.c list_debug.c handle_error.c link_list_sort.c
 NAME = ft_ls
 CC = gcc
 CFLAGS =  -Wall -Wextra -Werror

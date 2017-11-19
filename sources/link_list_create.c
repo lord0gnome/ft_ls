@@ -6,13 +6,13 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 14:45:24 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/19 14:57:54 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/19 16:46:17 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 #include "error.h"
-//#include "ft_printf.h"
+#include "ft_printf.h"
 #include <stdlib.h>
 #include <sys/stat.h>
 
@@ -27,7 +27,7 @@ t_ls_list	*create_element_or_new_list(t_ls_filedata *data, t_ls_list *prev)
 	new = (t_ls_list *)malloc(sizeof(t_ls_list));
 	if (!new)
 		return (NULL);
-	new->data = *data;
+	new->data = data;
 	new->prev = NULL;
 	new->next = NULL;
 	if (prev)

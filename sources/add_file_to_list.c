@@ -6,13 +6,13 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/02 13:34:30 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/19 13:28:56 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/19 16:45:38 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/stat.h>
 #include "ft_ls.h"
-//#include "ft_printf.h"
+#include "ft_printf.h"
 #include "error.h"
 #include "libft.h"
 #include <stdlib.h>
@@ -29,7 +29,7 @@ int	add_file_to_list(char *file, t_ls_list **list, char *real_name)
     t_ls_filedata	*data;
 
     data = (t_ls_filedata *)malloc(sizeof(t_ls_filedata));
-    if (lstat(file, &(buf)) != -1)
+    if (stat(file, &(buf)) != -1)
 	data->statret = buf;
 	else
 		return (KO_SYSCALL_ERROR_LSTAT);

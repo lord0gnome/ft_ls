@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 14:19:14 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/19 15:27:15 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/19 17:36:22 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,12 @@ int	main(int argc, char **argv)
 		len = 1;
 	}
 	else
-		sorted_args = ft_sort_str_array(sorted_args, len, &(ft_strcmp), 1); //careful here
+		sorted_args = ft_sort_str_array(sorted_args, len, &(ft_strcmp), 1);
 	seperate_files_and_folders(len, sorted_args, &data);
 	while (data.list->prev)
-	{
 		data.list = data.list->prev;
-	}
 	while (data.list)
 	{
-		if (data.list->data.real_name[0] != '.')
-		{
-			ft_putstr(data.list->data.real_name);
-			ft_putchar('\n');
-		}
 		ft_ls(data.list, &data);
 		data.list = data.list->next;
 	}

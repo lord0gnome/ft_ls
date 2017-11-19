@@ -1,3 +1,4 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 1.	Parse through considering things as options until you encounter
 	either a "--" or an incorrect option, which will be considered,
 	along with every subsequent argument, as a file/directory/operand
@@ -11,13 +12,21 @@
 		will accept any number of each, though more will not change
 		behavior of program, ex:
 			-lllaarrrttrRR
-
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 2.	Sort between folders/files, if multiple operands are given,
 	put files before folders in display, should organise an array
 	from the start.
-
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 3.	Make sure we're properly appending and trimming the current working
 	directory from the current path for all calls.
-
-4.	Need to read the whole dir from opendir, then close it and start on the other directories.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+4.	Need to read the whole dir from opendir, then close it and
+	start on the other directories.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+5.	NEED TO REMOVE ALL HARDCODED CRAP
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+6.	Need to find lost items when sorting
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+7.	Need to avoid invisible files if we're not using -a flag when sorting
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 

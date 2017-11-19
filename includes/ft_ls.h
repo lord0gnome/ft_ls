@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 16:14:44 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/19 15:18:06 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/19 17:13:04 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct	s_ls_filedata
 
 typedef struct	s_ls_list
 {
-	t_ls_filedata		data;
+	t_ls_filedata		*data;
 	int			init_entry;
 
 
@@ -65,6 +65,7 @@ int				seperate_files_and_folders(int names_len, char **names, t_ls_data *data);
 t_ls_list		*create_element_or_new_list(t_ls_filedata *data, t_ls_list *prev);
 int				add_file_to_list(char *file, t_ls_list **list, char *real_name);
 int				ft_ls(t_ls_list *item, t_ls_data *data);
+int				sort_by_name_asc(t_ls_list *item1, t_ls_list *item2, t_ls_data *d);
 void			handle_error(t_ls_data data);
 void			print_parameters(t_ls_params *params);
 void			print_list_from_start(t_ls_list *link);
