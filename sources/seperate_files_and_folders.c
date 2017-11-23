@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 18:43:13 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/19 14:58:14 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/23 18:51:29 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ int	seperate_files_and_folders(int names_len, char **names, t_ls_data *data)
 	if (lstat(names[index], &current_item) != -1)
 	    status[index] = current_item.st_mode & S_IFDIR ? 3 : 2;
 	else
+	{
+		handle_error_soft(*data);
 	    status[index] = 1;
+	}
 	index++;
     }
     index = 0;

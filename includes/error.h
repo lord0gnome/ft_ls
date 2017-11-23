@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:43:34 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/19 13:28:50 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/23 18:34:06 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 # define NO_ELEMENT_TO_FREE -4
 # define KO_SYSCALL_ERROR_OPENDIR -5
 # define KO_SYSCALL_ERROR_LSTAT -6
+# define KO_SYSCALL_ERROR_STAT -7
 
 #endif

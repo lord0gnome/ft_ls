@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/02 13:34:30 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/19 16:45:38 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/23 18:34:11 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	add_file_to_list(char *file, t_ls_list **list, char *real_name)
     if (stat(file, &(buf)) != -1)
 	data->statret = buf;
 	else
-		return (KO_SYSCALL_ERROR_LSTAT);
+		return (KO_SYSCALL_ERROR_STAT);
     data->name = ft_strdup(file);
 	data->real_name = ft_strdup(real_name);
     *list = create_element_or_new_list(data, *list);

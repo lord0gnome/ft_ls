@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 14:19:14 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/19 17:36:22 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/23 19:09:02 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,28 @@ int	main(int argc, char **argv)
 	else
 		sorted_args = ft_sort_str_array(sorted_args, len, &(ft_strcmp), 1);
 	seperate_files_and_folders(len, sorted_args, &data);
-	while (data.list->prev)
+	while (data.list && data.list->prev)
 		data.list = data.list->prev;
+	ft_putstr("seg ehre?");
 	while (data.list)
 	{
-		ft_ls(data.list, &data);
+		if (ft_ls(data.list, &data) < 1)
+		{
+	ft_putstr("seg ehre?");
+			handle_error(data);
+		}
+		//if (data.list && !data.list->next)
+		//	break ;
+		data.list = data.list->next;
+	}
+	ft_putstr("seg ehre?");
+	while (data.list && data.list->prev)
+			data.list = data.list->prev;
+	ft_putchar('\n');
+	ft_putstr("seg ehre?");
+	while (data.list && data.list->next)
+	{
+		ft_printf("%s\n", data.list->data->real_name);
 		data.list = data.list->next;
 	}
 	return (0);

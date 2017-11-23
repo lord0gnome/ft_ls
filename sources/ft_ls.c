@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 17:28:41 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/19 17:22:14 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/23 18:46:40 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,21 @@ int			sort_by_parameter(t_ls_list *from, t_ls_list *to, t_ls_data *d)
 	t_ls_list	*compare = from->next;
 	while (42)
 	{
-		if (!from || !compare)
-			break;
+		if (from == to)
+		{
+			break ;
+		}
 		if (!sort_by_name_asc(from, compare, d))
 		{
-			from = restart;
 			compare = from->next;
 			continue;
 		}
-		from = from->next;
 		compare = compare->next;
-		if (from == to)
-		{
-			break;
+		if (!compare->next)
+		{	
+			restart = from->next;
+			from = from->next;
+			compare = from->next;
 		}
 	}
 	return (1);
