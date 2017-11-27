@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 14:19:14 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/23 19:09:02 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/27 13:57:00 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ int	main(int argc, char **argv)
 	seperate_files_and_folders(len, sorted_args, &data);
 	while (data.list && data.list->prev)
 		data.list = data.list->prev;
-	ft_putstr("seg ehre?");
+	if (data.list)
+	{
+		ft_printf("item in list is %s\n", data.list->data->real_name);
+	}
 	while (data.list)
 	{
 		if (ft_ls(data.list, &data) < 1)

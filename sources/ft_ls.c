@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 17:28:41 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/23 18:46:40 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/27 13:57:00 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static int	handle_dir(const char *name, t_ls_list *current_item, t_ls_data *d)
 	{
 		while ((entry = readdir(stream)) != NULL)
 		{
+			ft_printf("item : %s\n", entry->d_name);
 			add_file_to_list(add_dir_to_str(name ,entry->d_name), &current_item, entry->d_name);
 		}
 	}
@@ -71,15 +72,34 @@ static int	handle_dir(const char *name, t_ls_list *current_item, t_ls_data *d)
 	return (KO_SYSCALL_ERROR_OPENDIR);
 }
 
+static int	call_handle_dir(t_ls_list *item, t_ls_data *data)
+{
+	if (!S_ISDIR(item->data->statret.st_mode))
+		return (0);
+	if (item->init_entry)
+		return (1);
+	if (ft_strrevncmp("..", item->data->real_name, 2) ||
+		ft_strrevncmp(".", item->data->real_name, 1))
+	{
+		if (item->data->real_name[0] != '.' || data->params->show_hidden)
+			return (1);
+	}
+
+	return (0);
+}
+
 int			ft_ls(t_ls_list *item, t_ls_data *data)
 {
-	if (((data->params->recursive 
+/*	if (((data->params->recursive 
 					&& ft_strcmp("..", item->data->real_name)
 					&& ft_strcmp(".", item->data->real_name)
 					&& (item->data->real_name[0] != '.' || data->params->show_hidden))
 				|| item->init_entry)
 			&& S_ISDIR(item->data->statret.st_mode))
+	{*/
+	if (call_handle_dir(item, data))
 	{
+		ft_putstr("sdgdg");
 		if ((data->err = handle_dir(item->data->name, item, data)) < 0)
 			handle_error(*data);
 	}
