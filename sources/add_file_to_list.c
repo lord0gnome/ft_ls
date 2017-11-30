@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/02 13:34:30 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/23 18:34:11 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/30 15:38:52 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	add_file_to_list(char *file, t_ls_list **list, char *real_name)
 		return (KO_SYSCALL_ERROR_STAT);
     data->name = ft_strdup(file);
 	data->real_name = ft_strdup(real_name);
+	data->init_entry = 0;
     *list = create_element_or_new_list(data, *list);
     return (OK);
 }

@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 18:43:13 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/23 18:51:29 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/11/30 12:36:23 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	seperate_files_and_folders(int names_len, char **names, t_ls_data *data)
 	    if (status[index] == error_file_folder_index)
 	    {
 		add_file_to_list(names[index], &(data->list), names[index]);
-		data->list->init_entry = 1;
+		data->list->data->init_entry = 1;
 	    }
 	    index++;
 	}
