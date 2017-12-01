@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/02 13:34:30 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/30 15:38:52 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/12/01 12:12:16 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	add_file_to_list(char *file, t_ls_list **list, char *real_name)
 
     data = (t_ls_filedata *)malloc(sizeof(t_ls_filedata));
     if (stat(file, &(buf)) != -1)
-	data->statret = buf;
+		data->statret = buf;
 	else
 		return (KO_SYSCALL_ERROR_STAT);
     data->name = ft_strdup(file);

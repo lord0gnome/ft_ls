@@ -6,13 +6,15 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 16:14:44 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/30 15:38:55 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/12/01 12:31:15 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LS_H
 # define FT_LS_H
 # include <sys/stat.h>
+# define SEE_FUNCTION_CALLS 0
+# define SEE_FUNCTION_ENDS 0
 
 
 typedef struct	s_ls_filedata
@@ -44,6 +46,7 @@ typedef struct	s_ls_data
 	char		parse_error_culprit;
 	char		*current_dir;
 	int			err;
+	char		*errstr;
 }				t_ls_data;
 
 typedef struct	s_ls_params

@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 17:45:58 by guiricha          #+#    #+#             */
-/*   Updated: 2017/10/24 19:16:51 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/12/01 12:23:26 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 
 int	init_data(t_ls_data *data)
 {
+	ft_memset(data, 0, sizeof(data));
+	data->list = NULL;
 	data->params = (t_ls_params *)ft_memalloc(sizeof(t_ls_params));
-	data->last_param = 0;
 	if (!data->params)
 		return (KO_MALLOC);
 	data->params->valid_options = ft_strnew(ft_strlen("lrRtah"));

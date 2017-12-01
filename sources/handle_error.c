@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 15:06:17 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/23 18:33:14 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/12/01 12:06:49 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ void	handle_error_soft(t_ls_data data)
 	else if (data.err == NO_ELEMENT_TO_FREE)
 		ft_putstr("No Element To Free");
 	else if (data.err == KO_SYSCALL_ERROR_OPENDIR)
-		ft_printf("Call to opendir() failed with error: %s", strerror(errno));
+		ft_printf("Call to opendir(%s) failed with error: %s", data.errstr, strerror(errno));
 	else if (data.err == KO_SYSCALL_ERROR_LSTAT)
-		ft_printf("Call to lstat() failed with error: %s", strerror(errno));
+		ft_printf("Call to lstat(%s) failed with error: %s", data.errstr, strerror(errno));
+	else if (data.err == KO_SYSCALL_ERROR_STAT)
+		ft_printf("Call to stat(%s) failed with error: %s", data.errstr, strerror(errno));
 	ft_putchar('\n');
 }
 
@@ -46,9 +48,11 @@ void	handle_error(t_ls_data data)
 	else if (data.err == NO_ELEMENT_TO_FREE)
 		ft_putstr("No Element To Free");
 	else if (data.err == KO_SYSCALL_ERROR_OPENDIR)
-		ft_printf("Call to opendir() failed with error: %s", strerror(errno));
+		ft_printf("Call to opendir(%s) failed with error: %s", data.errstr, strerror(errno));
 	else if (data.err == KO_SYSCALL_ERROR_LSTAT)
-		ft_printf("Call to lstat() failed with error: %s", strerror(errno));
+		ft_printf("Call to lstat(%s) failed with error: %s", data.errstr, strerror(errno));
+	else if (data.err == KO_SYSCALL_ERROR_STAT)
+		ft_printf("Call to stat(%s) failed with error: %s", data.errstr, strerror(errno));
 	ft_putchar('\n');
 	exit(0);
 }

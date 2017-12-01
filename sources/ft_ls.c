@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 17:28:41 by guiricha          #+#    #+#             */
-/*   Updated: 2017/11/30 19:19:39 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/12/01 14:30:15 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int			sort_by_parameter(t_ls_list *from, t_ls_list *to, t_ls_data *d)
 	t_ls_list	*compare = from->next;
 	int			swapped;
 
+	ft_putstr(SEE_FUNCTION_CALLS ? "ft_ls_called\n" : "");
 	swapped = 1;
 	while (42)
 	{
@@ -33,15 +34,12 @@ int			sort_by_parameter(t_ls_list *from, t_ls_list *to, t_ls_data *d)
 		swapped = 0;
 		while (from && compare)
 		{
-			//ft_printf("from and compare == [%s] and [%s]\n", from->data->real_name, compare->data->real_name);
-			//	ft_printf("to == [%s]\n", to->data->real_name);
 			if (!sort_by_name_asc(from, compare, d))
 			{
 				swapped = 1;
 			}
 			if (compare == to)
 			{
-			//	ft_printf("compare == to for [%s] and [%s]\n", compare->data->real_name, to->data->real_name);
 				from = restart;
 				compare = from->next;
 				break ;
@@ -62,24 +60,22 @@ static int	handle_dir(const char *name, t_ls_list **current_item, t_ls_data *d)
 	t_ls_list	*first;
 
 	first = *current_item;
-	d->current_dir = d->current_dir;
 	if ((stream = opendir(name)) == NULL)
 		return (KO_SYSCALL_ERROR_OPENDIR);
 	else
 	{
 		while ((entry = readdir(stream)) != NULL)
 		{
-			add_file_to_list(add_dir_to_str(name ,entry->d_name), current_item, entry->d_name);
+			if (entry->d_name[0] != '.' ||
+					d->params->show_hidden)
+				add_file_to_list(add_dir_to_str(name ,entry->d_name), current_item, entry->d_name);
 		}
 	}
-		//	ft_printf("last item in list should be here: %s\n", (*current_item)->data->real_name);
-		//	ft_printf("first item is %s\n", first->data->real_name);
-			first = first->next;
-		//	print_list_from_start(first);
+	first = first->next;
+	//free_ls_element(first->prev);
 	if ((sort_by_parameter(first, (*current_item), d)) < 1)
 		handle_error(*d);
-//	print_list_from_start(first);
-			(*current_item) = first;
+	(*current_item) = first;
 	if (!closedir(stream))
 		return (OK);
 	return (KO_SYSCALL_ERROR_OPENDIR);
@@ -97,7 +93,6 @@ static int	call_handle_dir(t_ls_list *item, t_ls_data *data)
 		if ((item->data->real_name[0] != '.' || data->params->show_hidden) && data->params->recursive)
 			return (1);
 	}
-
 	return (0);
 }
 

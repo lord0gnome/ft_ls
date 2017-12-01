@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 16:39:57 by guiricha          #+#    #+#             */
-/*   Updated: 2017/10/24 19:19:00 by guiricha         ###   ########.fr       */
+/*   Updated: 2017/12/01 12:25:53 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int			parse_options(int argc, char **argv, t_ls_data *data)
 	int		index;
 	char	*current_arg;
 
+	ft_putstr(SEE_FUNCTION_CALLS ? "parse_options called\n" : "");
 	while (data->last_param < argc)
 	{
 		index = 0;
