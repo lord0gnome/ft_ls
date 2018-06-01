@@ -52,7 +52,7 @@ int			parse_options(int argc, char **argv, t_ls_data *data)
 	char	*current_arg;
 
 	ft_putstr(SEE_FUNCTION_CALLS ? "parse_options called\n" : "");
-	while (data->last_param < argc)
+	while (data->last_param < argc - 1)
 	{
 		index = 0;
 		current_arg = argv[data->last_param];

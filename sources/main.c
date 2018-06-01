@@ -28,7 +28,6 @@ int	main(int argc, char **argv)
 	if ((data.err = parse_options(len, sorted_args, &data)) < 0)
 		handle_error(data);
 	sorted_args = &(sorted_args[data.last_param]);
-	len -= data.last_param;
 	if (len == 0)
 	{
 		*sorted_args = (ft_strdup("."));

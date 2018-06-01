@@ -1,3 +1,6 @@
+Todays menu:
+Fix option parsing. Due saturday June 2nd, 23:42
+
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 1.	Parse through considering things as options until you encounter
 	either a "--" or an incorrect option, which will be considered,

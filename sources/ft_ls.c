@@ -98,17 +98,18 @@ static int	call_handle_dir(t_ls_list *item, t_ls_data *data)
 
 int			ft_ls(t_ls_list **item, t_ls_data *data)
 {
-	/*	if (((data->params->recursive 
-		&& ft_strcmp("..", item->data->real_name)
-		&& ft_strcmp(".", item->data->real_name)
-		&& (item->data->real_name[0] != '.' || data->params->show_hidden))
-		|| item->init_entry)
-		&& S_ISDIR(item->data->statret.st_mode))
-		{*/
-	if (call_handle_dir(*item, data))
+	if ((((data->params->recursive || (*item)->data->init_entry) 
+		&& ft_strcmp("..", (*item)->data->real_name)
+		&& ft_strcmp(".", (*item)->data->real_name)
+		&& ((*item)->data->real_name[0] != '.' || data->params->show_hidden))
+		|| (*item)->data->init_entry)
+		&& S_ISDIR((*item)->data->statret.st_mode))
 	{
-		if ((data->err = handle_dir((*item)->data->name, item, data)) < 0)
-			handle_error(*data);
+		if (call_handle_dir(*item, data))
+		{
+			if ((data->err = handle_dir((*item)->data->name, item, data)) < 0)
+				handle_error(*data);
+		}
 	}
 	return (OK);
 }

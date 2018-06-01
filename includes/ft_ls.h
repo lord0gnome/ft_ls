@@ -13,7 +13,7 @@
 #ifndef FT_LS_H
 # define FT_LS_H
 # include <sys/stat.h>
-# define SEE_FUNCTION_CALLS 0
+# define SEE_FUNCTION_CALLS 1
 # define SEE_FUNCTION_ENDS 0
 
 
