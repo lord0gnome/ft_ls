@@ -1,5 +1,6 @@
 Todays menu:
-Fix option parsing. Due saturday June 2nd, 23:42
+Make my LS -R option get the EXACT same results as the original
+and understand why it isn't doing so right now.
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 1.	Parse through considering things as options until you encounter

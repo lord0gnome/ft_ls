@@ -6,11 +6,12 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 16:39:57 by guiricha          #+#    #+#             */
-/*   Updated: 2017/12/01 12:25:53 by guiricha         ###   ########.fr       */
+/*   Updated: 2018/06/06 12:51:23 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "ft_printf.h"
 #include "error.h"
 #include "ft_ls.h"
 
@@ -52,10 +53,11 @@ int			parse_options(int argc, char **argv, t_ls_data *data)
 	char	*current_arg;
 
 	ft_putstr(SEE_FUNCTION_CALLS ? "parse_options called\n" : "");
-	while (data->last_param < argc - 1)
+	while (data->last_param < argc)
 	{
 		index = 0;
 		current_arg = argv[data->last_param];
+		ft_printf("Current arg is \"%s\"\n", current_arg);
 		if (current_arg[index] != '-'
 				|| (current_arg[index] == '-' && !(current_arg[index + 1])))
 			return (OK);

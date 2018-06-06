@@ -6,7 +6,7 @@
 /*   By: guiricha <guiricha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 14:19:14 by guiricha          #+#    #+#             */
-/*   Updated: 2017/12/01 14:06:10 by guiricha         ###   ########.fr       */
+/*   Updated: 2018/06/06 13:09:34 by guiricha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ int	main(int argc, char **argv)
 	if ((data.err = parse_options(len, sorted_args, &data)) < 0)
 		handle_error(data);
 	sorted_args = &(sorted_args[data.last_param]);
-	if (len == 0)
+	len -= data.last_param;
+	ft_printf("first argument after optionparsing: %s\n", *sorted_args);
+	ft_putnbr(data.last_param);
+	if (len == 0 || len == 0)
 	{
 		*sorted_args = (ft_strdup("."));
 		len = 1;
@@ -36,6 +39,7 @@ int	main(int argc, char **argv)
 	else
 		sorted_args = ft_sort_str_array(sorted_args, len, &(ft_strcmp), 1);
 	seperate_files_and_folders(len, sorted_args, &data);
+	print_parameters(data.params);
 	while (data.list && data.list->prev)
 		data.list = data.list->prev;
 	end = NULL;
